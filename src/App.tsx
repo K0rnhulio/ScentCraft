@@ -3,48 +3,114 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Heart, Zap, RefreshCw } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { generateScentRecommendation, type QuizAnswer, type ScentRecommendation } from '@/services/aiService';
+import { ScentCompositionDiagram } from './components/ScentCompositionDiagram';
 
 // Quiz questions data
 const QUESTIONS = [
   {
     id: 1,
-    text: "Let's start with the foundation. What kind of energy should this fragrance radiate?",
-    options: ["Deep, bold, and masculine leaning", "Soft, elegant, and feminine leaning", "Neutral, modern, and fluid (Unisex)"]
+    // Model: Identity / Unity
+    // Simplified for clear categorization.
+    text: "First, what is the style of this scent?",
+    options: [
+      "Masculine & Bold (For Men)", 
+      "Feminine & Elegant (For Women)", 
+      "Modern & Neutral (Unisex)"
+    ]
   },
   {
     id: 2,
-    text: "You've just sprayed it on. How does the opening moment make you feel?",
-    options: ["Awake and Electric", "Calm and Centered", "Wrapped in Mystery", "Clean and Polished"]
+    // Model: Sensory Marketing
+    // Focuses on the immediate 'Top Note' reaction.
+    text: "When you first spray it, how should it feel?",
+    options: [
+      "Fresh & Energetic", 
+      "Calm & Relaxing", 
+      "Mysterious & Deep", 
+      "Clean & Pure"
+    ]
   },
   {
     id: 3,
-    text: "If this scent were a drink or a treat, what would it be?",
-    options: ["A crisp Gin & Tonic with extra lime", "A rich, dark espresso or spiced chai", "A glass of rosé in a garden", "Vanilla bourbon or a warm pastry"]
+    // Model: Metaphor
+    // Universal drinks/treats that translate well.
+    text: "If this scent was a drink, what would it be?",
+    options: [
+      "Iced Citrus Cocktail (Cool & Sharp)", 
+      "Rich Coffee or Hot Tea (Warm & Deep)", 
+      "Sweet Pastry or Vanilla (Sweet & Cozy)", 
+      "Glass of Wine (Romantic & Floral)"
+    ]
   },
   {
     id: 4,
-    text: "Close your eyes. Where are you when you're wearing this signature mix?",
-    options: ["Domination mode: Boardrooms and city streets", "Intimate mode: Candlelight and close quarters", "Escape mode: Ocean air or deep woods", "Comfort mode: Fresh sheets and a rainy Sunday"]
+    // Model: Contextual Framing
+    // Replaced "Domination mode" with clear use-cases.
+    text: "Where will you wear this signature mix?",
+    options: [
+      "The Office (Professional & Leader)", 
+      "Date Night (Seductive & Intimate)", 
+      "Vacation & Outdoors (Free & Natural)", 
+      "Relaxing at Home (Comfortable)"
+    ]
   },
   {
     id: 5,
+    // Model: Synesthesia
+    // Temperature is a great way to describe scent without smelling it.
     text: "What is the perfect 'temperature' for this scent?",
-    options: ["Sunlight on skin (Warm, bright)", "Cool morning mist (Crisp, airy)", "A crackling fireplace (Cozy, smoky)", "Midnight air (Cool, deep)"]
+    options: [
+      "Warm Sunlight (Bright)", 
+      "Cool Morning Mist (Airy)", 
+      "Cozy Fireplace (Smoky/Woody)", 
+      "Midnight Air (Cold/Dark)"
+    ]
   },
   {
     id: 6,
-    text: "You walk past someone and leave a scent trail. What do they think?",
-    options: ["That person is effortlessly cool", "That person is powerful", "That person is dangerously attractive", "That person is clean and trustworthy"]
+    // Model: Social Proof / Status
+    // Focuses on the compliment they want to receive.
+    text: "When people smell you, what should they think?",
+    options: [
+      "They have great style (Cool)", 
+      "They are successful (Powerful)", 
+      "They are attractive (Sexy)", 
+      "They are trustworthy (Clean)"
+    ]
   },
   {
     id: 7,
-    text: "If you could touch this scent, what would it feel like?",
-    options: ["Crisp white linen", "Heavy black velvet", "Warm cashmere sweater", "Cool polished stone"]
+    // Model: Tangibility
+    // Connecting smell to touch helps the brain imagine the product.
+    text: "If you could touch this scent, it would feel like...",
+    options: [
+      "Crisp White Shirt", 
+      "Black Velvet", 
+      "Soft Cashmere Sweater", 
+      "Cool Polished Stone"
+    ]
   },
   {
     id: 8,
-    text: "Finally, what is the 'Job' this perfume needs to do for you?",
-    options: ["Confidence Armor: Make me feel invincible", "Seduction Tool: Make me irresistible", "Mood Lifter: Make me feel happy", "Stress Buster: Make me feel grounded"]
+    // Model: Jobs to Be Done
+    // Crucial for the final emotional sell.
+    text: "What is the 'Job' this perfume needs to do for you?",
+    options: [
+      "Confidence Armor (Make me feel strong)", 
+      "Seduction Tool (Make me irresistible)", 
+      "Mood Lifter (Make me feel happy)", 
+      "Stress Buster (Make me feel calm)"
+    ]
+  },
+  {
+    id: 9,
+    // Model: Endowment Effect & Gift Giving
+    // *NEW* - This sets up the ZNS printing offer.
+    text: "Finally, who is this masterpiece for?",
+    options: [
+      "For Myself (My Signature Scent)", 
+      "A Gift (To impress someone special)"
+    ]
   }
 ];
 
@@ -383,55 +449,15 @@ function App() {
                   </p>
                 </motion.div>
               </motion.div>
-              
-              {/* Description Card */}
+
+              {/* Scent Composition Diagram */}
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="bg-neutral-50 rounded-3xl p-8 sm:p-10 mb-8"
+                transition={{ delay: 0.25 }}
+                className="mb-8"
               >
-                <p className="text-xl text-neutral-700 leading-relaxed">
-                  {recommendation.description}
-                </p>
-              </motion.div>
-              
-              {/* Components */}
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="mb-10"
-              >
-                <h3 className="text-lg font-medium mb-6 text-neutral-500 uppercase tracking-wider">Your Formula</h3>
-                <div className="space-y-4">
-                  {recommendation.components.map((component, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ x: -20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: 0.5 + idx * 0.1 }}
-                      className="bg-white border border-neutral-200 rounded-2xl p-5 flex items-center gap-5"
-                    >
-                      <div className="w-16 h-16 rounded-2xl bg-black flex items-center justify-center flex-shrink-0">
-                        <span className="text-xl font-semibold text-white">{component.percentage}%</span>
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className={`text-xs px-2 py-1 rounded-full font-medium ${
-                            component.type === 'PERFUME_ESSENCE' 
-                              ? 'bg-black text-white' 
-                              : 'bg-neutral-200 text-neutral-700'
-                          }`}>
-                            {component.type === 'PERFUME_ESSENCE' ? 'Perfume Essence Notes' : 'Support Notes'}
-                          </span>
-                        </div>
-                        <p className="text-sm text-neutral-400 font-medium mb-1">#{component.item_id}</p>
-                        <h4 className="text-xl font-semibold text-black">{component.name}</h4>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+                <ScentCompositionDiagram components={recommendation.components} />
               </motion.div>
               
               {/* Actions */}

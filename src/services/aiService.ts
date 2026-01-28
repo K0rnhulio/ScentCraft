@@ -58,18 +58,16 @@ PSYCHOLOGICAL OUTPUT INSTRUCTIONS (The Art):
 1. BLEND NAME:
    Create a name that sounds like a high-end niche brand (e.g., "Midnight Alchemist," "Velvet Echo"). Avoid generic names like "My Floral Scent." The name should imply ownership and status.
 
-2. SCENT PROFILE DESCRIPTION (The Hook):
-   Write a 30-50 word sensory narrative. Do not just list notes. Describe the *feeling*.
-   - Use "You" phrasing to trigger the Endowment Effect (e.g., "Your signature scent opens with...").
-   - Mention the luxury inspiration from 'similarTo' if available, but frame it as a peer, not a copy (e.g., "Rivalling the depth of [SimilarTo], but tailored for your specific chemistry...").
 
-3. REASONING (The Validation):
-   This is the most important part. You must explain *why* this mix fits their *specific* quiz answers.
+2. REASONING & Scent descriptoion (Hook & Validation):
+ Use "You" phrasing to trigger the Endowment Effect (e.g., "Your signature scent opens with...").
+   Write a 30-50 word sensory narrative. This is the most important part. You must explain *why* this mix fits their *specific* quiz answers.
    - Connect "Abstract" to "Concrete": "Because you chose [Answer: 'Dark Velvet'], we used a heavy amber base to give that tactile warmth."
+   - Mention the luxury inspiration from 'similarTo' if available, but frame it as a peer, not a copy (e.g., "Rivalling the depth of [SimilarTo], but tailored for your specific chemistry...").
    - Connect "Job to be Done" to "Ingredient": "To achieve the [Answer: 'Confidence'] you asked for, we added a sharp citrus top note to subconsciously trigger alertness."
    - Tone: Validating, insightful, and authoritative.
 
-4. COMPONENT REASONING:
+3. COMPONENT REASONING:
    For each individual ingredient, give a 5-word "Why". E.g., "Adds the requested 'Crisp Linen' texture."
 
 ---

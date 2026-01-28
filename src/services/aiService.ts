@@ -139,7 +139,7 @@ export const generateScentRecommendation = async (
     return recommendation;
   } catch (error) {
     console.error('Error calling AI:', error);
-    // Fallback to mock recommendation if API fails
+    // Fallback to mock recommendation if both APIs fail
     return generateMockRecommendation(answers);
   }
 };
